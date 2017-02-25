@@ -56,63 +56,103 @@ public class EmailCheckerTest {
 		assertTrue(testEmail.containsPeriod("liam@dal.cs.ca"));
 	}
 	
+	//The following tests ensure that the email address is all lowercase.
+	
+	
+	//Tests all lowercase - should return true
+	@Test
+	public void testNoCapitals(){
+		EmailChecker testEmail = new EmailChecker();
+		assertTrue(testEmail.containsAllLowerCase("liam@dal.ca"));
+	}
+	
+	//tests some capitals - should return false
+	@Test
+	public void testSomeCapitals(){
+		EmailChecker testEmail = new EmailChecker();
+		assertFalse(testEmail.containsAllLowerCase("lIaM@dAl.Ca"));
+	}
+	
+	//tests all capitals - should return false
+	public void testAllCapitals(){
+		EmailChecker testEmail = new EmailChecker();
+		assertFalse(testEmail.containsAllLowerCase("LIAM@DAL.CA"));
+	}
+	
+	//The following tests to see if the emails contains swears
+	
+	//Tests to see if there are no swears - Should return True
+	@Test
+	public void testNoSwears(){
+		EmailChecker testEmail = new EmailChecker();
+		assertTrue(testEmail.containsNoSwears("liam@dal.ca"));
+	}
+	
+	//Tests to see if there are swears - Should return False
+	@Test
+	public void testSwears(){
+		EmailChecker testEmail = new EmailChecker();
+		assertFalse(testEmail.containsNoSwears("cottonheadninnymuggins@nerfherder.prawn"));
+	}
+	
+	
 	//The following tests to see if an email is valid. 
 	//A valid email should have an integer 2 returned when tested for.
 	
-	//Tests for 0 '@'s and 0 '.'s, - Should be 0, for an invalid email
+	//Tests for 0 '@'s and 0 '.'s, - Should be 2, for an invalid email
 	@Test
 	public void test0Q0P(){
 		EmailChecker testEmail = new EmailChecker();
-		assertEquals(0, testEmail.validate("liamdalca"));
+		assertEquals(2, testEmail.validate("liamdalca"));
 	}
 	
-	//Tests for 0 '@'s and 1 '.', - Should be 1, for an invalid email
+	//Tests for 0 '@'s and 1 '.', - Should be 3, for an invalid email
 	@Test
 	public void test0Q1P(){
 		EmailChecker testEmail = new EmailChecker();
-		assertEquals(1, testEmail.validate("liamdal.ca"));
+		assertEquals(3, testEmail.validate("liamdal.ca"));
 	}
 	
-	//Tests for 0 '@'s and 2 '.'s, - Should be 1, for an invalid email
+	//Tests for 0 '@'s and 2 '.'s, - Should be 3, for an invalid email
 	@Test
 	public void test0Q2P(){
 		EmailChecker testEmail = new EmailChecker();
-		assertEquals(1, testEmail.validate("liamdal.cs.ca"));
+		assertEquals(3, testEmail.validate("liamdal.cs.ca"));
 	}
 	
-	//Tests for 1 '@'s and 0 '.'s, - Should be 1, for an invalid email
+	//Tests for 1 '@'s and 0 '.'s, - Should be 3, for an invalid email
 	@Test
 	public void test1Q0P(){
 		EmailChecker testEmail = new EmailChecker();
-		assertEquals(1, testEmail.validate("liam@dalca"));
+		assertEquals(3, testEmail.validate("liam@dalca"));
 	}
 	
-	//Tests for 2 '@'s and 0 '.'s, - Should be 0, for an invalid email
+	//Tests for 2 '@'s and 0 '.'s, - Should be 2, for an invalid email
 	@Test
 	public void test2Q0P(){
 		EmailChecker testEmail = new EmailChecker();
-		assertEquals(0, testEmail.validate("liam@@dalca"));
+		assertEquals(2, testEmail.validate("liam@@dalca"));
 	}
 	
-	//Tests for 2 '@'s and 1 '.'s, - Should be 0, for an invalid email
+	//Tests for 2 '@'s and 1 '.'s, - Should be 2, for an invalid email
 	@Test
 	public void test2Q1P(){
 		EmailChecker testEmail = new EmailChecker();
-		assertEquals(1, testEmail.validate("liam@@dal.ca"));
+		assertEquals(3, testEmail.validate("liam@@dal.ca"));
 	}
 	
 	//Tests for 1 '@'s and 1 '.'s, - Should be 2, for a valid email
 	@Test
 	public void test1Q1P(){
 		EmailChecker testEmail = new EmailChecker();
-		assertEquals(2, testEmail.validate("liam@dal.ca"));
+		assertEquals(4, testEmail.validate("liam@dal.ca"));
 	}
 	
 	//Tests for 1 '@'s and 2 '.'s, - Should be 2, for a valid email
 	@Test
 	public void test1Q2P(){
 		EmailChecker testEmail = new EmailChecker();
-		assertEquals(2, testEmail.validate("liam@dal.cs.ca"));
+		assertEquals(4, testEmail.validate("liam@dal.cs.ca"));
 	}
 	
 	
