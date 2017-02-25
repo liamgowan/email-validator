@@ -16,6 +16,7 @@ public class EmailCheckerTest {
 
 	
 	//The following tests are to test that the email contains only one '@'
+	
 	//This one tests for one '@' sign - Should be True
 	@Test
 	public void testEmailOneAtSign() {

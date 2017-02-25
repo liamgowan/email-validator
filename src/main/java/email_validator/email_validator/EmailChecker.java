@@ -11,7 +11,7 @@ package email_validator.email_validator;
 
 public class EmailChecker {
 
-	//tests to ensure there is only one '@' sign. Returns true if so
+	//This Tests to ensure there is only one '@' sign. Returns true if so
 	public boolean containsOneAt(String email){
 		int atCounter=0;
 		for(int i=0; i<email.length();i++)
